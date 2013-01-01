@@ -65,14 +65,14 @@ function adjacent_archive_link( $format, $link, $previous = true ) {
 	$order = $previous ? 'DESC' : 'ASC';
 	$sql = "
 		SELECT post_date from $wpdb->posts
-		WHERE post_date $op '$current_date'
+		WHERE post_date $op '%s'
 		AND post_type = 'post'
 		AND post_status = 'publish'
 		ORDER BY post_date $order
 		LIMIT 1
 	";
 
-	$adjacent_post_date = $wpdb->get_var( $wpdb->prepare( $sql ) );
+	$adjacent_post_date = $wpdb->get_var( $wpdb->prepare( $sql, $current_date ) );
 
 	if ( !$adjacent_post_date ) {
 		return;
