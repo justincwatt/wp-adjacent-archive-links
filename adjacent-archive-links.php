@@ -78,18 +78,23 @@ function adjacent_archive_link( $format, $link, $previous = true ) {
 		return;
 	} else {
 		$adjacent_post_date = strtotime( $adjacent_post_date );
+		$adjacent_year = date( 'Y', $adjacent_post_date );
+		$adjacent_month = date( 'm', $adjacent_post_date );
+		$adjacent_day = date( 'd', $adjacent_post_date );
 	}
 
 	if ( is_year() ) {
-		$href = date( '/Y/', $adjacent_post_date );
+		$href = get_year_link( $adjacent_year );
 		/* translators: format for year archive links, see http://php.net/date */
 		$date = date( __( 'Y', 'adjacent-archive-links' ), $adjacent_post_date );
+
 	} elseif ( is_month() ) {
-		$href = date( '/Y/m/', $adjacent_post_date );
+		$href = get_month_link( $adjacent_year, $adjacent_month );
 		/* translators: format for month archive links, see http://php.net/date */
 		$date = date( __( 'F Y', 'adjacent-archive-links' ), $adjacent_post_date );
+
 	} else {
-		$href = date( '/Y/m/d/', $adjacent_post_date );
+		$href = get_day_link( $adjacent_year, $adjacent_month, $adjacent_day );
 		/* translators: format for day archive links, see http://php.net/date */
 		$date = date( __( 'F j, Y', 'adjacent-archive-links' ), $adjacent_post_date );
 	}
