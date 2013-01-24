@@ -75,38 +75,45 @@ function adjacent_archive_link( $format, $link, $previous = true ) {
 	$adjacent_post_date = $wpdb->get_var( $wpdb->prepare( $sql, $current_date ) );
 
 	if ( !$adjacent_post_date ) {
-		return;
+		$output = '';
 	} else {
 		$adjacent_post_date = strtotime( $adjacent_post_date );
-		$adjacent_year = date( 'Y', $adjacent_post_date );
+		
+		$adjacent_year  = date( 'Y', $adjacent_post_date );
 		$adjacent_month = date( 'm', $adjacent_post_date );
-		$adjacent_day = date( 'd', $adjacent_post_date );
+		$adjacent_day   = date( 'd', $adjacent_post_date );
+		
+		if ( is_year() ) {
+			$href = get_year_link( $adjacent_year );
+			/* translators: format for year archive links, see http://php.net/date */
+			$date = date( __( 'Y', 'adjacent-archive-links' ), $adjacent_post_date );
+
+		} elseif ( is_month() ) {
+			$href = get_month_link( $adjacent_year, $adjacent_month );
+			/* translators: format for month archive links, see http://php.net/date */
+			$date = date( __( 'F Y', 'adjacent-archive-links' ), $adjacent_post_date );
+
+		} else {
+			$href = get_day_link( $adjacent_year, $adjacent_month, $adjacent_day );
+			/* translators: format for day archive links, see http://php.net/date */
+			$date = date( __( 'F j, Y', 'adjacent-archive-links' ), $adjacent_post_date );
+		}	
+
+		$rel = $previous ? 'prev' : 'next';
+		$string = '<a href="' . $href . '" rel="' . $rel . '">';
+		$inlink = str_replace( '%date', $date, $link );
+		$inlink = $string . $inlink . '</a>';
+		$output = str_replace( '%link', $inlink, $format );
 	}
 
-	if ( is_year() ) {
-		$href = get_year_link( $adjacent_year );
-		/* translators: format for year archive links, see http://php.net/date */
-		$date = date( __( 'Y', 'adjacent-archive-links' ), $adjacent_post_date );
+	$adjacent = $previous ? 'previous' : 'next';
 
-	} elseif ( is_month() ) {
-		$href = get_month_link( $adjacent_year, $adjacent_month );
-		/* translators: format for month archive links, see http://php.net/date */
-		$date = date( __( 'F Y', 'adjacent-archive-links' ), $adjacent_post_date );
-
-	} else {
-		$href = get_day_link( $adjacent_year, $adjacent_month, $adjacent_day );
-		/* translators: format for day archive links, see http://php.net/date */
-		$date = date( __( 'F j, Y', 'adjacent-archive-links' ), $adjacent_post_date );
-	}
-
-	$rel = $previous ? 'prev' : 'next';
-	$string = '<a href="' . $href . '" rel="' . $rel . '">';
-	$link = str_replace( '%date', $date, $link );
-	$link = $string . $link . '</a>';
-	$format = str_replace( '%link', $link, $format );
-
-	print $format;
+	echo apply_filters("{$adjacent}_archive_link", $output, $format, $link);
 }
+
+
+
+
 
 function adjacent_archive_links_init() {
 	load_plugin_textdomain( 'adjacent-archive-links', false, basename( dirname( __FILE__ ) ) . '/languages' );
