@@ -4,7 +4,7 @@ Donate link: http://justinsomnia.org/2012/11/adjacent-archive-links-for-wordpres
 Tags: archive, archives, date archives, template tag, navigation
 Requires at least: 3.0
 Tested up to: 3.5
-Stable tag: 2.0
+Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -28,7 +28,8 @@ defaults to "`&laquo; %link`" and `next_archive_link` defaults to "`%link &raquo
 The *link* parameter defines the link text. Both tags default to "`%date`", the 
 adjacent archive page's localized date.
 
-If you're interested in contributing to the code behind this plugin, [it's also hosted on GitHub](https://github.com/justincwatt/wp-adjacent-archive-links).
+If you're interested in contributing to the code behind this plugin, it's also hosted on GitHub:
+https://github.com/justincwatt/wp-adjacent-archive-links
 
 == Installation ==
 
