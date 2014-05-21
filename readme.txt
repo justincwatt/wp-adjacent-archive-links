@@ -3,7 +3,7 @@ Contributors: justincwatt
 Donate link: http://justinsomnia.org/2012/11/adjacent-archive-links-for-wordpress/
 Tags: archive, archives, date archives, template tag, navigation
 Requires at least: 3.0
-Tested up to: 3.5
+Tested up to: 3.9.1
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -47,6 +47,10 @@ Just add `query_posts($query_string . '&showposts=1000&order=asc');` to the arch
 1. This is an example of how it looks on a date archive page customized to only show post titles in chronological order.
 
 == Changelog ==
+= 3.0 =
+* Fixed issue where date strings were appearing non-localized (in en_US only)
+* Added Spanish localization (Hat tip: Andrew Kurtis)
+
 = 2.0 =
 * Fixed use of wpdb->prepare for WordPress v3.5 (Hat tip: Jonathan Patt)
 * Improved output of custom previous/next archive hrefs (Hat tip: Trevor Morris)
@@ -56,6 +60,9 @@ Just add `query_posts($query_string . '&showposts=1000&order=asc');` to the arch
 * Initial version
 
 == Upgrade Notice ==
+= 3.0 =
+Better localization support
+
 = 2.0 =
 Updated for WordPress 3.5
 
