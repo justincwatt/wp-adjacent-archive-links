@@ -3,7 +3,7 @@
 Plugin Name: Adjacent Archive Links
 Plugin URI: http://justinsomnia.org/2012/11/adjacent-archive-links-for-wordpress/
 Description: Adds the <code>previous_archive_link</code> and <code>next_archive_link</code> template tags, which generate links to your previous/next date archive pages (day, month, and year). 
-Version: 2.0
+Version: 3.0
 Author: Justin Watt
 Author URI: http://justinsomnia.org/
 
