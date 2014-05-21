@@ -49,7 +49,7 @@ Just add `query_posts($query_string . '&showposts=1000&order=asc');` to the arch
 == Changelog ==
 = 3.0 =
 * Fixed issue where date strings were appearing non-localized (in en_US only)
-* Added Spanish localization (Hat tip: Andrew Kurtis)
+* Added Spanish localization (Hat tip: Andrew Kurtis of WebHostingHub)
 
 = 2.0 =
 * Fixed use of wpdb->prepare for WordPress v3.5 (Hat tip: Jonathan Patt)
