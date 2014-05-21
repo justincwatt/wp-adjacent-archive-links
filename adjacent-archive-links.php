@@ -86,17 +86,17 @@ function adjacent_archive_link( $format, $link, $previous = true ) {
 		if ( is_year() ) {
 			$href = get_year_link( $adjacent_year );
 			/* translators: format for year archive links, see http://php.net/date */
-			$date = date( __( 'Y', 'adjacent-archive-links' ), $adjacent_post_date );
+			$date = date_i18n( __( 'Y', 'adjacent-archive-links' ), $adjacent_post_date );
 
 		} elseif ( is_month() ) {
 			$href = get_month_link( $adjacent_year, $adjacent_month );
 			/* translators: format for month archive links, see http://php.net/date */
-			$date = date( __( 'F Y', 'adjacent-archive-links' ), $adjacent_post_date );
+			$date = date_i18n( __( 'F Y', 'adjacent-archive-links' ), $adjacent_post_date );
 
 		} else {
 			$href = get_day_link( $adjacent_year, $adjacent_month, $adjacent_day );
 			/* translators: format for day archive links, see http://php.net/date */
-			$date = date( __( 'F j, Y', 'adjacent-archive-links' ), $adjacent_post_date );
+			$date = date_i18n( __( 'F j, Y', 'adjacent-archive-links' ), $adjacent_post_date );
 		}	
 
 		$rel = $previous ? 'prev' : 'next';
