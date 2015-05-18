@@ -111,10 +111,6 @@ function adjacent_archive_link( $format, $link, $previous = true ) {
 	echo apply_filters("{$adjacent}_archive_link", $output, $format, $link);
 }
 
-
-
-
-
 function adjacent_archive_links_init() {
 	load_plugin_textdomain( 'adjacent-archive-links', false, basename( dirname( __FILE__ ) ) . '/languages' );
 }
